@@ -3,18 +3,18 @@ import {useObserver} from "mobx-react"
 import {VehicleCard} from "./VehicleCard"
 import {GrPrevious, GrNext} from "react-icons/gr"
 import "./VehicleList.css"
-import {useVehicleList} from "./useVehicleList"
 import {useStore} from "../common/Store"
 import { toJS } from 'mobx';
 
 
 export const VehicleList = () => { 
-  const {loading, data} = useVehicleList()
+  const store = useStore() 
+  const {loading, data} = store.useVehicleList()
   const [page, setPage] = useState(0)
   const [vehicleCards, setVehicleCards] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
 
-  const store = useStore() 
+  
   const SOURCELIST = toJS(store.mockData)
   const [source,setSource] = useState(SOURCELIST)
 
@@ -22,7 +22,7 @@ export const VehicleList = () => {
     if(loading) return
     setVehicleCards(data[page])
     console.log(data)
-  },[loading, page, vehicleCards])
+  },[loading, page, vehicleCards, data])
   const changePage = (index) => {
     setPage(index)
   }
