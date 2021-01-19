@@ -92,9 +92,8 @@ export const VehicleList = () => {
           <div className="grid">
             {vehicleCards.map((vehicle) => {
               return <VehicleCard key={vehicle.id} {...vehicle}/>
-            })}
-            <h1>Page {page + 1}/{data.length}</h1>            
-          </div>                       
+            })}                        
+          </div>                                 
         ) : (
           null
         )}
