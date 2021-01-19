@@ -16,15 +16,15 @@ export const Details = () => {
     }
   })
   useEffect(() => {    
-    setVehicle(result)
+    setVehicle(result[0])
   },[])
   return (
     <div className="main-section">
       <h1>Details</h1>
-      <h2>{vehicle[0].make}</h2>
-      <h3>{vehicle[0].model}</h3>
-      <h3>Color:{vehicle[0].color}</h3>
-      <h3>ID: {vehicle[0].id}</h3>
+      <h2>{vehicle.make}</h2>
+      <h3>{vehicle.model}</h3>
+      <h3>Color:{vehicle.color}</h3>
+      <h3>ID: {vehicle.id}</h3>
       
       <Link to="/">Back to list</Link>
 
