@@ -7,6 +7,7 @@ import {useStore} from "../common/Store"
 import { toJS } from 'mobx';
 
 
+
 export const VehicleList = () => { 
   const store = useStore() 
   const {loading, data} = store.useVehicleList()
@@ -21,7 +22,6 @@ export const VehicleList = () => {
   useEffect(() => {
     if(loading) return
     setVehicleCards(data[page])
-    console.log(data)
   },[loading, page, vehicleCards, data])
   const changePage = (index) => {
     setPage(index)
@@ -62,7 +62,7 @@ export const VehicleList = () => {
 
   return useObserver(() => (
     (
-      <section>
+      <section className="main-section">
         <div className="title-container">
           <h1>{loading ? "Loading..." : "Vehicles"}</h1>
           <div className="underline"></div>
