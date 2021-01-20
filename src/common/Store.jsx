@@ -1,6 +1,7 @@
 import React, {useContext, useState, useEffect} from "react"
 import {useLocalObservable} from "mobx-react"
 import data from "../api/MOCK_DATA.json"
+import logos from "../api/car-logos.json"
 import {arrayOfArrays} from '../common/utils'
 import { toJS } from 'mobx';
 
@@ -10,6 +11,7 @@ const StoreContext = React.createContext()
 export const StoreProvider = ({children}) => {
   const store = useLocalObservable(() => ({
     mockData: data,
+    carLogos: logos,
     useVehicleList: () => {  
       const [loading, setLoading] = useState(true)
       const [data, setData] = useState([])

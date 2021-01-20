@@ -5,8 +5,7 @@ import {GrPrevious, GrNext} from "react-icons/gr"
 import "./VehicleList.css"
 import {useStore} from "../common/Store"
 import { toJS } from 'mobx';
-
-
+import Button from 'react-bootstrap/Button'
 
 export const VehicleList = () => { 
   const store = useStore() 
@@ -15,7 +14,6 @@ export const VehicleList = () => {
   const [vehicleCards, setVehicleCards] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
 
-  
   const SOURCELIST = toJS(store.mockData)
   const [source,setSource] = useState(SOURCELIST)
 
@@ -38,7 +36,6 @@ export const VehicleList = () => {
       setPage(0)
     }    
   }  
-
   // --------- SORTING ------------------
 
   const sortByName = () => {
@@ -77,9 +74,9 @@ export const VehicleList = () => {
           {/* ---- SORTING  ---- */}
           
             {searchTerm && <div className="filter-container">
-              <button className="btn-filter" onClick={sortByName}>Sort by Name</button>
-              <button className="btn-filter" onClick={sortByYearNewest}>Sort by Year (Newest)</button>
-              <button className="btn-filter" onClick={sortByYearOldest}>Sort by Year (Oldest)</button>
+              <Button className="btn" onClick={sortByName}>Sort by Name</Button>
+              <Button className="btn" onClick={sortByYearNewest}>Sort by Year (Newest)</Button>
+              <Button className="btn" onClick={sortByYearOldest}>Sort by Year (Oldest)</Button>
             </div>
             }
           </div>
@@ -97,13 +94,16 @@ export const VehicleList = () => {
         ) : (
           null
         )}
+
+        {/* ------- BUTTONS --------- */}
+
         {!searchTerm && !loading ? ( <div className="buttons-container">
           <GrPrevious onClick={prevPage} className=".button-icon" />
           {data.map((item, index) => {
-            return <button 
+            return <Button 
             className={index === page ? "btn active" : "btn" }
             key={index} 
-            onClick={()=> changePage(index)}>{index + 1}</button>
+            onClick={()=> changePage(index)}>{index + 1}</Button>
           })}
           <GrNext onClick={nextPage} className=".button-icon"/>
         </div>) : null}
@@ -117,6 +117,7 @@ export const VehicleList = () => {
               value.color.toLowerCase().includes(searchTerm.toLowerCase())){
                 return value
               }
+              return null
             }).map((value, index) => {
               return <VehicleCard key={index} {...value}/>
             })}            

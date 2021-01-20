@@ -15,6 +15,10 @@ code {
   margin: 0 auto;
   width: 80vw;
 }
+.color-container{
+  width: 5rem;
+  height: 5rem;  
+}
 
 /* @media screen and (max-width: 700px){
   .main-section{
