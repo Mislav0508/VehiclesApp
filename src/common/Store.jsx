@@ -24,6 +24,9 @@ export const StoreProvider = ({children}) => {
         setLoading(false)
       }, [])
       return { loading, data }
+    },
+    editVehicleList: (new_data) => {
+      store.mockData = new_data
     }
   }))
   return <StoreContext.Provider value={store}>

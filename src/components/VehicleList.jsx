@@ -21,6 +21,7 @@ export const VehicleList = () => {
     if(loading) return
     setVehicleCards(data[page])
   },[loading, page, vehicleCards, data])
+
   const changePage = (index) => {
     setPage(index)
   }
@@ -36,26 +37,26 @@ export const VehicleList = () => {
       setPage(0)
     }    
   }  
-  // --------- SORTING ------------------
+    // --------- SORTING ------------------
 
-  const sortByName = () => {
-    const sorted = SOURCELIST.sort((el1,el2) => {
-     return (el1.make > el2.make) ? 1 : -1
-    })
-    setSource(sorted)
-  }
-  const sortByYearNewest = () => {
-    const sorted = SOURCELIST.sort((el1,el2) => {
-      return (el1.year > el2.year) ? -1 : 1
-    })
-    setSource(sorted)
-  }
-  const sortByYearOldest = () => {
-    const sorted = SOURCELIST.sort((el1,el2) => {
-      return (el1.year > el2.year) ? 1 : -1
-    })
-    setSource(sorted)
-  }
+    const sortByName = () => {
+      const sorted = SOURCELIST.sort((el1,el2) => {
+       return (el1.make > el2.make) ? 1 : -1
+      })
+      setSource(sorted)
+    }
+    const sortByYearNewest = () => {
+      const sorted = SOURCELIST.sort((el1,el2) => {
+        return (el1.year > el2.year) ? -1 : 1
+      })
+      setSource(sorted)
+    }
+    const sortByYearOldest = () => {
+      const sorted = SOURCELIST.sort((el1,el2) => {
+        return (el1.year > el2.year) ? 1 : -1
+      })
+      setSource(sorted)
+    }
 
   return useObserver(() => (
     (
