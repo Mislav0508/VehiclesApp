@@ -70,17 +70,16 @@ export const VehicleList = () => {
           <div className="filter-container">
             <input type="text" placeholder="Search..."
             value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}/> 
-          
-          {/* ---- SORTING  ---- */}
-          
-            {searchTerm && <div className="filter-container">
+            onChange={e => setSearchTerm(e.target.value)}/>             
+          </div>
+
+          {/* ---- SORTING  ---- */}   
+
+          {searchTerm && <div className="filter-container">
               <Button className="btn" onClick={sortByName}>Sort by Name</Button>
               <Button className="btn" onClick={sortByYearNewest}>Sort by Year (Newest)</Button>
               <Button className="btn" onClick={sortByYearOldest}>Sort by Year (Oldest)</Button>
-            </div>
-            }
-          </div>
+          </div>}
 
         </div>
 
