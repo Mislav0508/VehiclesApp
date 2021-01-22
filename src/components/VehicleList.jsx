@@ -37,7 +37,7 @@ export const VehicleList = () => {
       setPage(0)
     }    
   }  
-    // --------- SORTING ------------------
+    // --------- SORTING (NAME, YEAR) ------------------
 
     const sortByName = () => {
       const sorted = SOURCELIST.sort((el1,el2) => {
@@ -58,6 +58,22 @@ export const VehicleList = () => {
       setSource(sorted)
     }
 
+    // ------- DROPDOWN SORTING --------
+
+    const handleChange = (e) => {
+      if(e.target.value === "All"){
+        setSearchTerm("")
+      }else {
+        const filtered = SOURCELIST.filter((item) => {
+          return item.make === e.target.value
+        })
+        const individualBrand = filtered[0].make      
+        setSearchTerm(individualBrand)        
+      }      
+    }
+    const uniqueBrands = [...new Set(source.map((item) => item.make))]
+    uniqueBrands.sort()
+
   return useObserver(() => (
     (
       <section className="main-section">
@@ -70,7 +86,20 @@ export const VehicleList = () => {
           <div className="filter-container">
             <input type="text" placeholder="Search..."
             value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}/>             
+            onChange={e => setSearchTerm(e.target.value)}/>
+            <div className="select-container">
+              <label htmlFor="cars">Choose a car: </label>
+              <select onChange={(e) => handleChange(e)}>
+                <option value="All">All</option>
+                {uniqueBrands.map((item, i) => {
+                  return <option key={i} 
+                  value={item} 
+                  >
+                    {item}
+                    </option>
+                })}
+              </select>  
+            </div>           
           </div>
 
           {/* ---- SORTING  ---- */}   
@@ -101,7 +130,8 @@ export const VehicleList = () => {
           <GrPrevious onClick={prevPage} className=".button-icon" />
           {data.map((item, index) => {
             return <Button 
-            className={index === page ? "btn active" : "btn" }
+            className="btn-page"
+            variant={index === page ? "primary" : "dark"}
             key={index} 
             onClick={()=> changePage(index)}>{index + 1}</Button>
           })}

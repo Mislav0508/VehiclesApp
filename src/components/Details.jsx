@@ -81,17 +81,19 @@ export const Details = () => {
           /> : <h3>Color: {vehicle.color}</h3> }
           <FaCar style={{color: color}} className="car-icon" />
           <h3>ID: {vehicle.id}</h3>
-          <Link to="/">
-            <Button className="btn">
-            Back to list
-            </Button>
-          </Link>
-          {!edit ? <Button onClick={()=>setEdit(true)}>Edit color</Button>
-           : 
-           <Button variant="danger"
-           onClick={handleSave}
-           >Save</Button>}
-  
+          <div className="details-btn-container">
+            <Link to="/">
+              <Button className="btn-details" variant="outline-primary">
+              Back to list
+              </Button>
+            </Link>
+            {!edit ? <Button className="btn-details" onClick={()=>setEdit(true)}>Edit color</Button>
+            : 
+            <Button className="btn-details" variant="danger"
+            onClick={handleSave}
+            >Save</Button>}            
+          </div>
+            
         </div> }  
       </div>
     )

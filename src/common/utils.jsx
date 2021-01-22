@@ -1,5 +1,5 @@
 export const arrayOfArrays = (cars) => {
-  let carsPerPage = 12
+  let carsPerPage = 16
   let pages = Math.ceil(cars.length / carsPerPage)
   const newCars = Array.from({length: pages}, (value, index) => {
     const start = index * carsPerPage
