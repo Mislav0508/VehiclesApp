@@ -9,7 +9,7 @@ export const VehicleCard = ({id,make,model,year}) => {
   return useObserver(()=> (
     (
       <div className="grid-item" key={id}>
-        <h3>{make}</h3>      
+        <h3><b>{make}</b></h3>      
         <h4>Model: {model}</h4>
         <h4>Year: {year}</h4>
         <div className="details-div">

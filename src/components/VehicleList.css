@@ -1,5 +1,5 @@
 h1,h2,h3,h4,h5,h6,p{
-  color: var(--textColor);
+  font-family: 'Nunito', sans-serif;
   letter-spacing: 1px;
 }
 .title-container{
@@ -30,16 +30,20 @@ h1,h2,h3,h4,h5,h6,p{
   grid-template-columns: repeat(auto-fill,330px);
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
-.grid-item{
-  border: 2px solid black;
-  border-radius: 10%;
+.grid-item{  
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+  border: 2px solid darkgray;
+  border-radius: 25px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   flex-direction: column;
-  background-color: lightgray;
+  background-color: rgb(216, 216, 216);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .buttons-container{
   margin-top: 1rem;
